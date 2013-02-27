@@ -1,0 +1,27 @@
+{
+  "name": "html-stream",
+  "author": "Andrew Wolters",
+  "description": "An HTML stream parser, iterating over html events.",
+  "version": "0.1.0",
+  "license": "BSD",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --compilers coffee:coffee-script -R spec"
+  },
+  "repository": "",
+  "keywords": [
+    "html",
+    "parsing",
+    "stream"
+  ],
+  "dependencies": {
+    "fibers": "~1.0.0"
+  },
+  "devDependencies": {
+    "mocha": "~1.8.1",
+    "chai": "~1.5.0",
+    "sinon": "~1.6.0",
+    "sinon-chai": "~2.3.1",
+    "coffee-script": "~1.5.0"
+  }
+}
