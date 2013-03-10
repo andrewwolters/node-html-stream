@@ -9,10 +9,14 @@ HtmlStream = require '../index'
 
 assert = chai.assert
 
+s = null
+
 test = (input, exp) ->
     s.on 'end', ->
+        evs = Array.prototype.slice.call(s, 0)
         for expected in exp
-            ev = s.events.shift()
+            ev = evs.shift()
+
             assert.ok(ev)
             assert.equal(ev.kind, expected[0])
 
@@ -24,14 +28,12 @@ test = (input, exp) ->
                 attrs[attr.name] = attr.value for attr in ev.data.attrs
                 assert.deepEqual(attrs, expected[2]) if expected[2]
 
-        assert.lengthOf(s.events, 0)
+        assert.lengthOf(evs, 0)
 
     s.end input
 
-s = null
-
 beforeEach ->
-    s = new HtmlStream
+    s = new HtmlStream()
 
 describe 'single element', ->
     it 'simple', ->
