@@ -92,3 +92,9 @@ describe 'rare situations', ->
     it 'undefined input', ->
         test undefined, []
 
+describe 'stream usage', ->
+    it 'pipe to other stream', ->
+        assert.throws ->
+            P = require('readable-stream').PassThrough
+            s.pipe(new P)
+
