@@ -14,6 +14,9 @@
     "test": "mocha --compilers coffee:coffee-script -R spec"
   },
   "repository": "",
+  "dependencies": {
+    "readable-stream": "~1.0.1"
+  },
   "devDependencies": {
     "mocha": "~1.8.1",
     "chai": "~1.5.0",
