@@ -12,7 +12,7 @@ assert = chai.assert
 s = null
 
 test = (input, exp) ->
-    s.on 'end', ->
+    s.on 'finish', ->
         evs = Array.prototype.slice.call(s, 0)
         for expected in exp
             ev = evs.shift()
