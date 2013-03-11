@@ -105,3 +105,16 @@ describe 'stream usage', ->
             P = require('readable-stream').PassThrough
             s.pipe(new P)
 
+    it 'malformed html', ->
+        assert.throws ->
+            test "/!<!h>"
+
+    it 'multiple incomplete writes', (done) ->
+        s.write "<h1"
+        s.write ">Head"
+        test "ing</h1>", [
+            [ 'START', 'h1' ]
+            [ 'TEXT', 'Head' ]
+            [ 'TEXT', 'ing' ]
+            [ 'END', 'h1' ]
+        ], done
